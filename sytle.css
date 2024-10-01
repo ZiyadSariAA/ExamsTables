@@ -1,0 +1,129 @@
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Container to Center the Table */
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Style the Table */
+table {
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Style for the Table Header */
+th {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Style for the Table Rows */
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Zebra-striping rows */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Hover effect for table rows */
+tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+/* Style the "Days Left" column */
+td#daysLeft1, td#daysLeft2, td#daysLeft3, td#daysLeft4 {
+    font-weight: bold;
+    color: #FF5722; /* A bright color to highlight the "Days Left" */
+}
+
+/* Style the Timer Column */
+td#timer1, td#timer2, td#timer3, td#timer4 {
+    font-weight: bold;
+    color: #2196F3; /* Highlight the countdown timer in blue */
+}
+
+/* Style for the Image */
+img {
+    display: block;
+    margin: 20px auto;
+    max-width: 250px;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for Buttons */
+button {
+    display: block;
+    width: auto;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Style for Headings */
+h1 {
+    text-align: center;
+    font-size: 36px;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+h1:first-of-type {
+    font-weight: bold;
+    color: #4CAF50; /* Green for welcoming */
+}
+
+h1:last-of-type {
+    font-weight: normal;
+    color: #FF5722; /* Orange for exam warning */
+}
+
+/* Footer Style */
+footer {
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+}

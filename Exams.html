@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Dates with Countdown</title>
+    <link rel="stylesheet" href="sytle.css">
+</head>
+<body>
+
+<div> 
+    <table>
+        <tr>
+            <th>Courses</th>
+            <th>Days</th>
+            <th>Dates</th>
+            <th>Days Left</th>
+            <th>Time Until Next Day</th> <!-- New Column for Timer -->
+        </tr>
+        <tr>
+            <td>CPIT-405</td>
+            <td>Tuesday</td>  
+            <td id="date1">2024-10-08</td>
+            <td id="daysLeft1"></td>
+            <td id="timer1"></td> <!-- Timer for CPIT-405 -->
+        </tr>
+        <tr>
+            <td>CPIT-380</td>
+            <td>Monday</td>  
+            <td id="date2">2024-10-14</td>
+            <td id="daysLeft2"></td>
+            <td id="timer2"></td> <!-- Timer for CPIT-380 -->
+        </tr>
+        <tr>
+            <td>CPIT-475</td>
+            <td>Wednesday</td>  
+            <td id="date3">2024-10-16</td>
+            <td id="daysLeft3"></td>
+            <td id="timer3"></td> <!-- Timer for CPIT-475 -->
+        </tr>
+        <tr>
+            <td>CPIS-428</td>
+            <td>Tuesday</td>  
+            <td id="date4">2024-10-22</td>
+            <td id="daysLeft4"></td>
+            <td id="timer4"></td> <!-- Timer for CPIS-428 -->
+        </tr>
+    </table>
+</div>
+
+<script>
+    function calculateDaysLeft(examDateId, daysLeftId) {
+        const examDate = new Date(document.getElementById(examDateId).innerText);
+        const today = new Date();
+        const timeDifference = examDate - today;
+        const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)); // Convert ms to days
+        document.getElementById(daysLeftId).innerText = daysLeft >= 0 ? daysLeft : 0; // Show 0 if the date has passed
+    }
+
+    function startCountdown() {
+        // Get the current time
+        const now = new Date();
+        
+        // Calculate the time until the next day (midnight)
+        const nextDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+        const timeUntilNextDay = nextDay - now;
+
+        // Calculate hours, minutes, and seconds
+        const hours = Math.floor((timeUntilNextDay / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((timeUntilNextDay / (1000 * 60)) % 60);
+        const seconds = Math.floor((timeUntilNextDay / 1000) % 60);
+
+        // Format the time display
+        const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+        // Update timers for each exam row
+        document.getElementById("timer1").innerText = timeString;
+        document.getElementById("timer2").innerText = timeString;
+        document.getElementById("timer3").innerText = timeString;
+        document.getElementById("timer4").innerText = timeString;
+    }
+
+    function updateDaysLeft() {
+        // Calculate days left for each exam
+        calculateDaysLeft("date1", "daysLeft1");
+        calculateDaysLeft("date2", "daysLeft2");
+        calculateDaysLeft("date3", "daysLeft3");
+        calculateDaysLeft("date4", "daysLeft4");
+    }
+
+    // Update the days immediately on page load
+    updateDaysLeft();
+
+    // Set interval to update the days left every 24 hours (86,400,000 milliseconds)
+    setInterval(updateDaysLeft, 86400000); // 24 hours in milliseconds
+
+    // Start the countdown timer and update every second
+    setInterval(startCountdown, 1000); // Update every second for the timer
+</script>
+
+</body>
+</html>
